@@ -32,6 +32,46 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+     <!-- le style pour modal -->
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+        }
+        .scrollable-container
+        {
+            max-height: 500px; /* ou height: 100vh selon le cas */
+            overflow-y: auto;
+        }
+    </style>
+     <!-- fin de style pour modal -->
 </head>
 
 <body>
@@ -131,15 +171,29 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
+                                href="#tab-4">
+                                <i class="fa fa-wine-glass fa-2x text-primary"></i>
+                                <div class="ps-3">
+                                    <small class="text-body">Le_Goût</small>
+                                    <h6 class="mt-n1 mb-0">Cocktails&jus_maison</h6>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                     <!--tab-1-->
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-4">
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="image/Samoussa.jpeg"
-                                            alt="Samoussa" style="width: 80px;">
+                                    <div class="d-flex align-items-center article" data-title="Samoussa (2 pièces)"
+                                        data-image="image/les_entrés/Samoussa.jpeg"
+                                        data-description="Croustillants à souhait, garnis d’un mélange savoureux et légèrement épicé, ces triangles dorés sont un classique irrésistible."
+                                        data-prix="5,50€" onclick="openModalFromDiv(this)" style="cursor: pointer" ;>
+
+                                        <img class="flex-shrink-0 img-fluid rounded"
+                                            src="image/les_entrés/Samoussa.jpeg" alt="Samoussa" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>
@@ -147,14 +201,18 @@
                                                 </span>
                                                 <span class="text-primary"> 5,50€</span>
                                             </h5>
-                                            <small class="fst-italic">samoussa au saveur amet dolor justo diam</small>
+                                            <small class="fst-italic">Croustillants à souhait, garnis d’un mélange
+                                                savoureux et légèrement épicé, ces triangles dorés sont un classique
+                                                irrésistible.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href=""><img class="flex-shrink-0 img-fluid rounded" src="image/foutou.jpeg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href=""><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_entrés/Pastels.jpeg"
+                                                alt="   Pastels (par 2 pièces, au poisson ou viande)"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href=""><span>
@@ -162,15 +220,16 @@
                                                     </span></a>
                                                 <span class="text-primary"> 5,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Moelleux et parfumés, ces petits beignets farcis
+                                                typiquement ouest-africains sont un incontournable de nos apéros
+                                                traditionnels.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
                                         <a href=""><img class="flex-shrink-0 img-fluid rounded"
-                                                src="image/crevettes frites.jpg" alt="crevette"
+                                                src="image/les_entrés/crevettes frites.jpg" alt="crevette"
                                                 style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
@@ -179,16 +238,18 @@
                                                     </span></a>
                                                 <span class="text-primary">7,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Tendres et croustillantes, nos crevettes sont
+                                                marinées avec soin dans un mélange d’épices africaines et dorées à la
+                                                perfection.
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
                                         <a href=""></a><img class="flex-shrink-0 img-fluid rounded"
-                                            src="image/WhatsApp Image 2025-04-18 at 11.09.35.jpeg" alt=""
-                                            style="width: 80px;"></a>
+                                            src="image/les_entrés/Galettes et laitues1.png"
+                                            alt=" Galettes + feuilles de laitue" style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href=""><span>
@@ -196,15 +257,17 @@
                                                     </span></a>
                                                 <span class="text-primary">5,50€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Une entrée légère et texturée qui mêle croquant
+                                                végétal et douceur artisanale.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_entrés/salade_ouest_africaine1.png"
+                                                alt="Salade ouest-africaine (légumes + céréales)"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>
@@ -212,15 +275,19 @@
                                                     </span></a>
                                                 <span class="text-primary">6,50€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Un mélange coloré de légumes croquants et de
+                                                céréales locales, relevé d’une vinaigrette maison : fraîcheur et
+                                                vitalité garanties.
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_entrés/Salade-méchouia.jpeg"
+                                                alt="Salade méchouia (d’inspiration maghrébine)"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>
@@ -228,38 +295,71 @@
                                                     </span></a>
                                                 <span class="text-primary">6,00€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">IpUne revisite parfumée de cette salade
+                                                emblématique du Maghreb, aux poivrons grillés et aux épices
+                                                douces.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_entrés/Haricot blans au petit légumes.jpeg"
+                                                alt="Haricots blancs & petits légumes" style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>
-                                                        Entrée chaude : haricots blancs & petits légumes
+                                                        Haricots blancs & petits légumes
                                                     </span></a>
                                                 <span class="text-primary">6,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Réconfort et simplicité dans un bol : un classique
+                                                revisité à la sauce étoilée, à savourer chaud.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_entrés/Planche de fromages africaines1.png"
+                                                alt="Planche de fromages africains" style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Planche de fromages africains</span></a>
                                                 <span class="text-primary">7,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Sélection artisanale de fromages typiques du
+                                                continent, à partager ou non.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_entrés/soja.jpg" alt="Planche de soja épicé"
+                                                style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Planche de soja épicé</span></a>
+                                                <span class="text-primary">7,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">Une alternative végétale pleine de pep’s, marinée
+                                                et légèrement piquante. Pour les curieux... et les convaincus.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_entrés/tajine.jpeg" alt="Tajine"
+                                                style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Tajine</span></a>
+                                                <span class="text-primary">7,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">Une alternative végétale pleine de pep’s, marinée
+                                                et légèrement piquante. Pour les curieux... et les convaincus.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -361,7 +461,7 @@
                                                 alt="" style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <a href="#"><span>Sauce Arachider</span></a>
+                                                <a href="#"><span>Sauce Arachide</span></a>
                                                 <span class="text-primary">13,90€</span>
                                             </h5>
                                             <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
@@ -371,15 +471,16 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/foutu&sauce_graine.jpeg" alt="Sauces Graines + Foutou"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <a href="#"><span>Sauces Gombo / Graines + Foutou</span></a>
+                                                <a href="#"><span>Sauces Graines + Foutou</span></a>
                                                 <span class="text-primary">14,50€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Des sauces riches en textures et en traditions,
+                                                accompagnées de foutou moelleux (pâte de banane ou igname).</small>
                                         </div>
                                     </div>
                                 </div>
@@ -413,29 +514,30 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/saca_saca&riz.jpeg" alt="Saka-Saka (Pondu)"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Saka-Saka (Pondu)</span></a>
                                                 <span class="text-primary">13,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Feuilles de manioc longuement mijotées à l’huile
+                                                de palme, souvent servies avec du riz ou des bananes plantains.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="image/tajine.jpeg"
+                                                alt="Tajine" style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Tajine</span></a>
                                                 <span class="text-primary">14,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Mijoté dans sa sauce aux épices douces et fruits
+                                                secs : entre tradition berbère et voyage sensoriel.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -455,43 +557,31 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg"
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="image/thiépe.jpeg"
                                                 alt="" style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Thieboudienne</span></a>
-                                                <span class="text-primary">14,90€</span>
+                                                <span class="text-primary">16,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Le plat national du Sénégal : riz rouge parfumé,
+                                                poisson braisé, légumes mijotés. Une explosion de saveurs dans un seul
+                                                plat.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg"
-                                                alt="" style="width: 80px;"></a>
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <a href="#"><span>Riz Jollof / Riz Gras</span></a>
-                                                <span class="text-primary">4€</span>
-                                            </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/athiéké.jpeg" alt="Attiéké" style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Attiéké</span></a>
                                                 <span class="text-primary">4,50€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">
+                                                plat des ivoriens connu par son odeur savoureux entourés des allocos
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
@@ -511,8 +601,9 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/couscous.jpeg" alt="Couscous nature"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Couscous nature</span></a>
@@ -531,119 +622,386 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/bananes_flambées.jpeg" alt="Bananes flambées"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Bananes flambées</span></a>
                                                 <span class="text-primary">6,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Bananes mûres caramélisées et flambées au rhum ou
+                                                à la liqueur épicée. Chaudes, fondantes, inoubliables.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-2.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/déguè.jpeg" alt="Dégué"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Dégué (couscous sucré au yaourt)</span></a>
                                                 <span class="text-primary">6,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Un dessert ouest-africain à base de couscous de
+                                                mil, yaourt sucré, sucre vanillé et muscade. Crémeux, frais et
+                                                rassurant.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-3.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/dessert_créatif.jpeg"
+                                                alt="Compositions du chef (dessert créatif)" style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Compositions du chef (dessert créatif)</span></a>
                                                 <span class="text-primary">7,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Desserts créatifs et changeants selon
+                                                l’inspiration du moment… Une surprise à chaque bouchée !</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/gateau_de_manioc.jpeg" alt="Gâteau de manioc"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Gâteau de manioc</span></a>
                                                 <span class="text-primary">5,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Moelleux et légèrement fondant, parfumé à la noix
+                                                de coco ou au gingembre selon la recette du jour.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/baklava.jpeg" alt="Baklava"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Baklava</span></a>
                                                 <span class="text-primary">5,50€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Petites bouchées croustillantes à la pâte filo,
+                                                miel et fruits secs, en clin d’œil à l’Afrique du Nord et au
+                                                Moyen-Orient.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/tiramisu_revisité.jpeg"
+                                                alt="Tiramisu (version maison, aux saveurs d’Afrique )"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Tiramisu (version maison, aux saveurs d’Afrique )
                                                     </span></a>
                                                 <span class="text-primary">6,50€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Une version maison infusée aux arômes africains :
+                                                vanille, cacao, ou café d’Éthiopie… à découvrir !
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/feuilleté_de_bananes_aux_aromes_exotiques.jpeg"
+                                                alt="Feuilleté de banane aux arômes exotiques" style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <a href="#"><span>Feuilleté de banane aux arômes exotiques</span></a>
                                                 <span class="text-primary">6,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Banane fondante enveloppée dans une pâte
+                                                croustillante, relevée d’épices douces et d’un filet de sirop de fruits
+                                                tropicaux.
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg"
-                                                alt="" style="width: 80px;"></a>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/salades_de_fruits.jpeg" alt="Salade_au_fruit"
+                                                style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <a href="#"><span>Chicken Burger</span></a>
+                                                <a href="#"><span>Salade_au_fruit</span></a>
                                                 <span class="text-primary">5,90€</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo
-                                                diam</small>
+                                            <small class="fst-italic">Un mélange vitaminé et coloré de fruits tropicaux
+                                                frais : papaye, mangue, ananas…
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/deux_boules_de_glaces.jpeg"
+                                                alt="Glaces artisanales (2 boules)" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Glaces artisanales (2 boules)</span></a>
+                                                <span class="text-primary">5,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">Parfums exotiques : bissap, mangue, gingembre,
+                                                coco, selon disponibilité. Une pause fraîche bien méritée.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/mousse_au_chocolat.jpeg"
+                                                alt="Mousse au chocolat " style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Mousse au chocolat Baba au rhum (façon Afrique
+                                                        Étoilée) </span></a>
+                                                <span class="text-primary">5,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">L’intemporelle, mais version étoilée ! Fondante,
+                                                intense, parfois twistée avec une touche d’épice.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/baba_au_rhum.jpeg"
+                                                alt="Baba au rhum (façon Afrique Étoilée)" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Baba au rhum (façon Afrique Étoilée) </span></a>
+                                                <span class="text-primary">7,00€</span>
+                                            </h5>
+                                            <small class="fst-italic">Le classique généreusement imbibé… relevé d’une
+                                                touche africaine, fruitée ou épicée selon l’humeur du chef.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_desserts/yaourt_au_fruits.jpeg"
+                                                alt="Yaourt aux fruits tropicaux" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Yaourt aux fruits tropicaux </span></a>
+                                                <span class="text-primary">5,50€</span>
+                                            </h5>
+                                            <small class="fst-italic"> Onctueux, léger, accompagné de morceaux de fruits
+                                                exotiques frais ou compotés.
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!--tab-4-->
+                        <div id="tab-4" class="tab-pane fade show p-0">
+                            <div class="row g-4">
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/Cocktail.1.webp"
+                                                alt="Bissap Mojito" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Bissap Mojito</span></a>
+                                                <span class="text-primary">7,80€</span>
+                                            </h5>
+                                            <small class="fst-italic">Feuilles de menthe, citron vert, sirop de bissap
+                                                maison, rhum blanc ou eau gazeuse.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/Cocktail.2.webp"
+                                                alt="Cocktails aux jus" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Cocktails aux jus</span></a>
+                                                <span class="text-primary">8,80€</span>
+                                            </h5>
+                                            <small class="fst-italic">Feuilles de menthe, citron vert, sirop de bissap
+                                                maison, rhum blanc ou eau gazeuse.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/jus_de_bissap.jpeg"
+                                                alt="Jus de Bissap" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Jus de Bissap</span></a>
+                                                <span class="text-primary">4,50€</span>
+                                            </h5>
+                                            <small class="fst-italic">Infusion florale d’hibiscus rouge, légèrement
+                                                sucrée, citronnée ou mentholée.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/jus_de_gingembre.jpeg"
+                                                alt="Jus de Gingembre" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Jus de Gingembre</span></a>
+                                                <span class="text-primary">4,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">Racine de gingembre fraîche, citron vert, sucre de
+                                                canne – relevé et vivifiant.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/jus_de_baobab.jpeg"
+                                                alt="Jus de Baobab" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Jus de Baobab</span></a>
+                                                <span class="text-primary">5,00€</span>
+                                            </h5>
+                                            <small class="fst-italic">Boisson crémeuse et acidulée à base de pulpe de
+                                                fruit de baobab</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/jus_de_mangue.jpeg"
+                                                alt="Jus de Mangue" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Jus de Mangue</span></a>
+                                                <span class="text-primary">5,00€</span>
+                                            </h5>
+                                            <small class="fst-italic">100% pur mangue ou nectar maison, légèrement épicé
+                                                ou nature</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/jus_d'ananas.jpeg"
+                                                alt="Jus d’Ananas pressé" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Jus d’Ananas pressé
+                                                    </span></a>
+                                                <span class="text-primary">4,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">Frais du jour, sans additifs</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/jus_de_papaye.jpeg"
+                                                alt="Jus de Papaye" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Jus de Papaye</span></a>
+                                                <span class="text-primary">5,00€</span>
+                                            </h5>
+                                            <small class="fst-italic">Doux et velouté, très apprécié pour ses bienfaits
+                                                digestifs.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/limonade_africaine_maison.jpeg"
+                                                alt="Limonade maison africaine " style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Limonade maison africaine.</span></a>
+                                                <span class="text-primary">5,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">Citron vert, gingembre, menthe fraîche, sucre
+                                                roux</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/jus_de_kimkeliba.jpeg"
+                                                alt="jus_de_kimkeliba" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>jus_de_kimkeliba.</span></a>
+                                                <span class="text-primary">4,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">Infusion désaltérante d’une plante d’Afrique de
+                                                l’Ouest, goût subtil.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/jus_de_tamarin.jpeg"
+                                                alt="Jus_de_tamarin" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Jus_de_tamarin.</span></a>
+                                                <span class="text-primary">5,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">Pulpe de tamarin, eau, sucre brut – goût acidulé
+                                                et rafraîchissant</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded"
+                                                src="image/les_cocktails&les_jus_maisons/jus_de_goyave.jpeg"
+                                                alt="jus_de_goyave" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>jus_de_goyave.</span></a>
+                                                <span class="text-primary">4,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">Frais du jour, sans additifs avec un saveur
+                                                incontournable</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Fin tab-4-->
+
+
                     </div>
                 </div>
             </div>
@@ -701,6 +1059,50 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+    <!--debut modal  -->
+    <div id="myModal" class="modal scrollable-container">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h4 id="modalTitle"></h4>
+            <img id="modalImage" src="" alt="" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
+            <p id="modalDescription"></p>
+            <p><strong>Prix :</strong> <span id="modalPrix"></span></p>
+            <button onclick="ajouterAuPanier()"
+                style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px;">
+                Ajouter au panier
+            </button>
+        </div>
+    </div>
+
+    <!-- debut script pour modal -->
+    <script>
+        function openModalFromDiv(element) {
+            document.getElementById("modalTitle").textContent = element.dataset.title;
+            document.getElementById("modalImage").src = element.dataset.image;
+            document.getElementById("modalDescription").textContent = element.dataset.description;
+            document.getElementById("modalPrix").textContent = element.dataset.prix;
+
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function ajouterAuPanier() {
+            const item = document.getElementById("modalTitle").textContent;
+            alert(item + " ajouté au panier !");
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+
+    <!-- fin script pour modal -->
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
