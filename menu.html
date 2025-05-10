@@ -32,7 +32,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-     <!-- le style pour modal -->
+    <!-- le style pour modal -->
     <style>
         .modal {
             display: none;
@@ -65,13 +65,14 @@
             color: #888;
             cursor: pointer;
         }
-        .scrollable-container
-        {
-            max-height: 500px; /* ou height: 100vh selon le cas */
+
+        .scrollable-container {
+            max-height: 500px;
+            /* ou height: 100vh selon le cas */
             overflow-y: auto;
         }
     </style>
-     <!-- fin de style pour modal -->
+    <!-- fin de style pour modal -->
 </head>
 
 <body>
@@ -208,7 +209,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                        data-title="Pastels (par 2 pièces, au poisson ou viande)"
+                                        data-image="image/les_entrés/Pastels.jpeg" data-description="Moelleux et parfumés, ces petits beignets farcis
+                                                typiquement ouest-africains sont un incontournable de nos apéros
+                                                traditionnels." data-prix="5,90€" onclick="openModalFromDiv(this)"
+                                        style="cursor: pointer" ;>
                                         <a href=""><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_entrés/Pastels.jpeg"
                                                 alt="   Pastels (par 2 pièces, au poisson ou viande)"
@@ -227,7 +233,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                        data-title="Crevettes frites (marinées, épicées)"
+                                        data-image="image/les_entrés/crevettes frites.jpg" data-description="Tendres et croustillantes, nos crevettes sont
+                                                marinées avec soin dans un mélange d’épices africaines et dorées à la
+                                                perfection." data-prix="7,90€" onclick="openModalFromDiv(this)"
+                                        style="cursor: pointer" ;>
                                         <a href=""><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_entrés/crevettes frites.jpg" alt="crevette"
                                                 style="width: 80px;"></a>
@@ -246,7 +257,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                        data-title="Galettes + feuilles de laitue"
+                                        data-image="image/les_entrés/Galettes et laitues1.png"
+                                        data-description="Une entrée légère et texturée qui mêle croquant végétal et douceur artisanale."
+                                        data-prix="5,50€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href=""></a><img class="flex-shrink-0 img-fluid rounded"
                                             src="image/les_entrés/Galettes et laitues1.png"
                                             alt=" Galettes + feuilles de laitue" style="width: 80px;"></a>
@@ -263,7 +278,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                        data-title="Salade ouest-africaine (légumes + céréales)"
+                                        data-image="image/les_entrés/salade_ouest_africaine1.png" 
+                                        data-description="Un mélange coloré de légumes croquants et decéréales locales, relevé d’une vinaigrette maison : fraîcheur et vitalité garanties."
+                                        data-prix="6,50€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_entrés/salade_ouest_africaine1.png"
                                                 alt="Salade ouest-africaine (légumes + céréales)"
@@ -283,7 +302,13 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                    data-title="  Salade méchouia (d’inspiration maghrébine)"
+                                    data-image="image/les_entrés/Salade-méchouia.jpeg"
+                                    data-description="Une revisite parfumée de cette salade
+                                                emblématique du Maghreb, aux poivrons grillés et aux épices
+                                                douces."
+                                    data-prix="6,00€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_entrés/Salade-méchouia.jpeg"
                                                 alt="Salade méchouia (d’inspiration maghrébine)"
@@ -295,14 +320,19 @@
                                                     </span></a>
                                                 <span class="text-primary">6,00€</span>
                                             </h5>
-                                            <small class="fst-italic">IpUne revisite parfumée de cette salade
+                                            <small class="fst-italic">Une revisite parfumée de cette salade
                                                 emblématique du Maghreb, aux poivrons grillés et aux épices
                                                 douces.</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                    data-title="Haricots blancs & petits légumes"
+                                    data-image="image/les_entrés/Haricot blans au petit légumes.jpeg"
+                                    data-description="Réconfort et simplicité dans un bol : un classique
+                                                revisité à la sauce étoilée, à savourer chaud."
+                                    data-prix="6,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_entrés/Haricot blans au petit légumes.jpeg"
                                                 alt="Haricots blancs & petits légumes" style="width: 80px;"></a>
@@ -319,7 +349,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                    data-title="Planche de fromages africains"
+                                    data-image="image/les_entrés/Planche de fromages africaines1.png"
+                                    data-description="Sélection artisanale de fromages typiques du
+                                                continent, à partager ou non."
+                                    data-prix="7,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_entrés/Planche de fromages africaines1.png"
                                                 alt="Planche de fromages africains" style="width: 80px;"></a>
@@ -334,7 +369,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                    data-title="Planche de soja épicé"
+                                    data-image="image/les_entrés/soja.jpg"
+                                    data-description="Une alternative végétale pleine de pep’s, marinée
+                                                et légèrement piquante. Pour les curieux... et les convaincus."
+                                    data-prix="7,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_entrés/soja.jpg" alt="Planche de soja épicé"
                                                 style="width: 80px;"></a>
@@ -349,7 +389,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                    data-title="Tajine"
+                                    data-image="image/les_entrés/tajine.jpeg"
+                                    data-description="Une alternative végétale pleine de pep’s, marinée
+                                                et légèrement piquante. Pour les curieux... et les convaincus."
+                                    data-prix="7,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_entrés/tajine.jpeg" alt="Tajine"
                                                 style="width: 80px;"></a>
@@ -370,7 +415,7 @@
                         <div id="tab-2" class="tab-pane fade show p-0">
                             <div class="row g-4">
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article">
                                         <a href="#"></a><img class="flex-shrink-0 img-fluid rounded"
                                             src="img/menu-1.jpg" alt="" style="width: 80px;"></a>
                                         <div class="w-100 d-flex flex-column text-start ps-4">
@@ -621,7 +666,12 @@
                         <div id="tab-3" class="tab-pane fade show p-0">
                             <div class="row g-4">
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                    data-title="Bananes flambées"
+                                    data-image="image/les_desserts/bananes_flambées.jpeg"
+                                    data-description="Bananes mûres caramélisées et flambées au rhum ou
+                                                à la liqueur épicée. Chaudes, fondantes, inoubliables."
+                                    data-prix="6,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/bananes_flambées.jpeg" alt="Bananes flambées"
                                                 style="width: 80px;"></a>
@@ -636,7 +686,13 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                    data-title="Dégué (couscous sucré au yaourt)"
+                                    data-image="image/les_desserts/déguè.jpeg"
+                                    data-description="Un dessert ouest-africain à base de couscous de
+                                                mil, yaourt sucré, sucre vanillé et muscade. Crémeux, frais et
+                                                rassurant."
+                                    data-prix="6,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/déguè.jpeg" alt="Dégué"
                                                 style="width: 80px;"></a>
@@ -652,7 +708,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                    data-title="Compositions du chef (dessert créatif)"
+                                    data-image="image/les_desserts/dessert_créatif.jpeg"
+                                    data-description="Desserts créatifs et changeants selon
+                                                l’inspiration du moment… Une surprise à chaque bouchée !"
+                                    data-prix="7,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/dessert_créatif.jpeg"
                                                 alt="Compositions du chef (dessert créatif)" style="width: 80px;"></a>
@@ -667,7 +728,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Gâteau de manioc"
+                                     data-image="image/les_desserts/gateau_de_manioc.jpeg"
+                                     data-description="Moelleux et légèrement fondant, parfumé à la noix
+                                                de coco ou au gingembre selon la recette du jour."
+                                     data-prix="5,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/gateau_de_manioc.jpeg" alt="Gâteau de manioc"
                                                 style="width: 80px;"></a>
@@ -682,7 +748,13 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Baklava"
+                                     data-image="image/les_desserts/baklava.jpeg"
+                                     data-description="Petites bouchées croustillantes à la pâte filo,
+                                                miel et fruits secs, en clin d’œil à l’Afrique du Nord et au
+                                                Moyen-Orient."
+                                     data-prix="5,50€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/baklava.jpeg" alt="Baklava"
                                                 style="width: 80px;"></a>
@@ -698,7 +770,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Tiramisu (version maison, aux saveurs d’Afrique )"
+                                     data-image="image/les_desserts/tiramisu_revisité.jpeg"
+                                     data-description="Une version maison infusée aux arômes africains :
+                                                vanille, cacao, ou café d’Éthiopie… à découvrir !"
+                                     data-prix="6,50€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/tiramisu_revisité.jpeg"
                                                 alt="Tiramisu (version maison, aux saveurs d’Afrique )"
@@ -716,7 +793,13 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Feuilleté de banane aux arômes exotiques"
+                                     data-image="image/les_desserts/feuilleté_de_bananes_aux_aromes_exotiques.jpeg"
+                                     data-description="Banane fondante enveloppée dans une pâte
+                                                croustillante, relevée d’épices douces et d’un filet de sirop de fruits
+                                                tropicaux."
+                                     data-prix="6,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/feuilleté_de_bananes_aux_aromes_exotiques.jpeg"
                                                 alt="Feuilleté de banane aux arômes exotiques" style="width: 80px;"></a>
@@ -733,7 +816,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Salade_au_fruit"
+                                     data-image="image/les_desserts/salades_de_fruits.jpeg"
+                                     data-description="Un mélange vitaminé et coloré de fruits tropicaux
+                                                frais : papaye, mangue, ananas…"
+                                     data-prix="5,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/salades_de_fruits.jpeg" alt="Salade_au_fruit"
                                                 style="width: 80px;"></a>
@@ -749,7 +837,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Glaces artisanales (2 boules)"
+                                     data-image="image/les_desserts/deux_boules_de_glaces.jpeg"
+                                     data-description="Parfums exotiques : bissap, mangue, gingembre,
+                                                coco, selon disponibilité. Une pause fraîche bien méritée."
+                                     data-prix="5,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/deux_boules_de_glaces.jpeg"
                                                 alt="Glaces artisanales (2 boules)" style="width: 80px;"></a>
@@ -765,7 +858,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Mousse au chocolat Baba au rhum (façon Afrique Étoilée)"
+                                     data-image="image/les_desserts/mousse_au_chocolat.jpeg"
+                                     data-description="L’intemporelle, mais version étoilée ! Fondante,
+                                                intense, parfois twistée avec une touche d’épice."
+                                     data-prix="5,90€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/mousse_au_chocolat.jpeg"
                                                 alt="Mousse au chocolat " style="width: 80px;"></a>
@@ -782,7 +880,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Baba au rhum (façon Afrique Étoilée)"
+                                     data-image="image/les_desserts/baba_au_rhum.jpeg"
+                                     data-description="Le classique généreusement imbibé… relevé d’une
+                                                touche africaine, fruitée ou épicée selon l’humeur du chef."
+                                     data-prix="7,00€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/baba_au_rhum.jpeg"
                                                 alt="Baba au rhum (façon Afrique Étoilée)" style="width: 80px;"></a>
@@ -797,7 +900,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Yaourt aux fruits tropicaux"
+                                     data-image="image/les_desserts/yaourt_au_fruits.jpeg"
+                                     data-description="Onctueux, léger, accompagné de morceaux de fruits
+                                                exotiques frais ou compotés."
+                                     data-prix="5,50€" onclick="openModalFromDiv(this)" style="cursor: pointer;">
                                         <a href="#"><img class="flex-shrink-0 img-fluid rounded"
                                                 src="image/les_desserts/yaourt_au_fruits.jpeg"
                                                 alt="Yaourt aux fruits tropicaux" style="width: 80px;"></a>
