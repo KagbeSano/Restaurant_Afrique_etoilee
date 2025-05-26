@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="utf-8">
-    <title>Restaurant Afrique étoilée </title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+  <meta charset="utf-8">
+  <title>Restaurant Afrique étoilée </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
   <style>
-    .panier-img 
-    {
+    .panier-img {
       width: 80px;
       height: auto;
     }
+
     .quantite-btn {
       width: 32px;
       height: 32px;
@@ -36,155 +37,82 @@
     }
   </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="image/logo.png" alt="logo" style="width: 50px; height:50px;"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" style="color: white;" href="index.html">Accueil</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link" style="color: white;" href="panier.html"><i class="bi bi-cart"></i> -->
-</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-<div class="container my-5">
-  <h2 class="mb-4">Mon Panier</h2>
-
-  <table class="table table-bordered align-middle text-center">
-    <thead class="table-dark">
-      <tr>
-        <th>Image</th>
-        <th>Nom</th>
-        <th>Prix</th>
-        <th>Quantité</th>
-        <th>Sous-total</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody id="panier-body">
-      <!-- Les lignes seront générées par JavaScript -->
-    </tbody>
-  </table>
-  <div class="text-end">
-    <h4>Total : <span id="panier-total">0 €</span></h4>
-    <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#commandeModal"style="padding: 10px 20px;  border: none; border-radius: 10px;">Commander</button>
-  </div>
-
-   <div >
-     <button class="btn btn-primary"  style="width:500px; padding: 10px 20px;  border: none; border-radius: 10px;">
-             Ajouter plus d'éléments
-    </button>
-  </div>
-</div>
- <!--debut modal  -->
-   <div class="modal fade" id="commandeModal" tabindex="-1" aria-labelledby="commandeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="col-12">
-                        <span class="btn btn-primary w-100 py-3">Fiche d'inscription</span>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="col-md-12">
-                            <form>
-                                <div class="row g-3">
-                                    <h3 class="text-primary fas fa-arrow-right">Informations personnelles</h3>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="nom" placeholder="Votre Nom">
-                                            <label for="nom">Votre Nom</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="prenom"
-                                                placeholder="Votre prenom">
-                                            <label for="prenom">Votre Prenom</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control" id="email"
-                                                placeholder="votre adresse electronique">
-                                            <label for="email">Votre Email</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="number" class="form-control" id="telephone"
-                                                placeholder="telephone">
-                                            <label for="telephone">Téléphone</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="password" class="form-control" id="mdp"
-                                                placeholder="Mot de passe">
-                                            <label for="mdp">Mot de passe</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="password" class="form-control" id="confirmation"
-                                                placeholder="confirmation">
-                                            <label for="confirmation">Confirmation du mot de passe</label>
-                                        </div>
-                                    </div>
-                                    <h3 class="text-primary fas fa-arrow-right">Informations de livraison</h3>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="adresse" placeholder="adresse">
-                                            <label for="objet">Adresse</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <input type="number" class="form-control" id="code_postal"
-                                                placeholder="code_postal">
-                                            <label for="code_postal">Code postal</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="ville" placeholder="ville">
-                                            <label for="ville">Ville</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="ville" placeholder="ville">
-                                            <label for="ville">Complement d'adresse</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <input type="checkbox" id="ville" placeholder="ville">
-                                        <label for="ville"><a href="#">j'accepte les</a> conditions générales de
-                                            vente</label>
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button type="button" class="btn btn-primary">M'inscrire</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="image/logo.png" alt="logo" style="width: 50px; height:50px;"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" style="color: white;" href="index.html">Accueil</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" style="color: white;" href="panier.html"><i class="bi bi-cart"></i> -->
+          </a></li>
+        </ul>
+      </div>
     </div>
-     <!-- fin modal  -->
+  </nav>
 
-<script>
+  <!-- <div class="container my-5">
+    <h2 class="mb-4">Mon Panier</h2>
+
+    <table class="table table-bordered align-middle text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Image</th>
+          <th>Nom</th>
+          <th>Prix</th>
+          <th>Quantité</th>
+          <th>Sous-total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="panier-body"> -->
+        <!-- Les lignes seront générées par JavaScript -->
+      <!-- </tbody>
+    </table>
+    <div class="text-end">
+      <h4>Total : <span id="panier-total">0 €</span></h4>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commandeModal"
+        style="padding: 10px 20px;  border: none; border-radius: 10px;">Commander</button>
+    </div>
+
+    <div>
+      <button class="btn btn-primary" style="width:500px; padding: 10px 20px;  border: none; border-radius: 10px;">
+        Ajouter plus d'éléments
+      </button>
+    </div>
+  </div> -->
+  <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon Panier</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #listePanier li { margin-bottom: 10px; }
+    #totalPanier { font-weight: bold; margin-top: 20px; font-size: 18px; }
+    button { padding: 8px 12px; border: none; background-color: #dc3545; color: white; border-radius: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>🛒 Mon Panier</h1>
+
+  <ul id="listePanier"></ul>
+
+  <div id="totalPanier">Total : 0 €</div>
+
+  <button onclick="viderPanier()">Vider le panier</button>
+
+  <!-- Lien vers la page des plats ou retour -->
+  <p><a href="index.html">← Retour à la boutique</a></p>
+
+  <script src="panier.js"></script>
+  
+  <!-- <script>
   // Exemple de données du panier (à remplacer par des données PHP ou API)
   let panier = [
     { id: 1, nom: "Poulet braisé", prix: 12.5, quantite: 2, image: "poulet.jpg" },
@@ -238,6 +166,7 @@
   }
 
   afficherPanier();
-</script>
+</script> -->
+
 </body>
 </html>

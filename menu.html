@@ -42,6 +42,7 @@
             top: 0;
             width: 100%;
             height: 100%;
+           /* overflow: auto;  scroll global si jamais nécessaire */
             background-color: rgba(0, 0, 0, 0.5);
         }
 
@@ -54,6 +55,8 @@
             max-width: 500px;
             position: relative;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            max-height: 80vh; /* Limite la hauteur visible du contenu */
+            overflow-y: auto; /* Active le scroll vertical si besoin */
         }
 
         .close {
@@ -65,13 +68,41 @@
             color: #888;
             cursor: pointer;
         }
+ </style>
+ <!-- <style>
+/* Style général pour le modal */
+.modal {
+  display: none; /* caché par défaut */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* scroll global si jamais nécessaire */
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-        .scrollable-container {
-            max-height: 500px;
-            /* ou height: 100vh selon le cas */
-            overflow-y: auto;
-        }
-    </style>
+/* Conteneur du contenu du modal */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-height: 80vh; /* Limite la hauteur visible du contenu */
+  overflow-y: auto; /* Active le scroll vertical si besoin */
+}
+
+/* Bouton de fermeture */
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+</style> -->
+
     <!-- fin de style pour modal -->
 </head>
 
@@ -113,7 +144,13 @@
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="panier.html" ><i class="bi bi-cart"></i></a>
+                   <a href="panier.html" style="position: relative; text-decoration: none; font-size: 24px;"  >
+                        <i class="bi bi-cart"></i>
+                        <span id="panierBadge" style="position: absolute; top: -8px; right: -12px;
+                            background-color: red; color: white; border-radius: 50%; padding: 2px 6px;
+                          font-size: 12px; display: none;">0
+                      </span>
+                    </a>
                 </div>
             </nav>
 
@@ -657,6 +694,115 @@
                                                 <span class="text-primary">13,50€</span>
                                             </h5>
                                             <small class="fst-italic">Riz parfumé accompagné de la sauce tombo avec des crêpes,delicieux au cœur universel.</small>
+                                        </div>
+                                    </div>
+                                </div><br><br><br><br>
+                                <div class="col-lg-12">
+                                    <h1 style="color: rgb(247, 144, 41);">Les accompagnements</h1><br>
+                                    <div class="col-lg-12">
+                                        <h5 style="color: rgb(86, 84, 82);">Parce qu’en Afrique, l’accompagnement n’est jamais un simple "à-côté", mais une vraie base culturelle et gustative, nous vous proposons un assortiment de classiques revisités ou fidèles à la tradition, 
+                                        à choisir selon vos envies et vos racines.
+                                        </h5></div>
+                              </div><br><br>
+                               <div class="col-lg-6">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Riz Jollof / Riz Gras"
+                                      data-image="image/Accompagnements/riz_jollof.jpeg"
+                                      data-description="Riz rouge épicé, mijoté dans une sauce tomate parfumée. Une fierté ouest-africaine, savoureuse et incontournable."
+                                      data-prix="4,00€" onclick="openModalFromDiv(this)" style="cursor: pointer";>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="image/Accompagnements/riz_jollof.jpeg"
+                                                alt="Sauce tômbô + riz" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Riz Jollof / Riz Gras</span></a>
+                                                <span class="text-primary">4,00€</span>
+                                            </h5>
+                                            <small class="fst-italic">Riz rouge épicé, mijoté dans une sauce tomate parfumée. Une fierté ouest-africaine, savoureuse et incontournable.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="col-lg-6">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Alloco"
+                                      data-image="image/Accompagnements/alloco.jpeg"
+                                      data-description="Bananes plantains mûres, coupées et frites à la perfection. Fondantes, dorées, irrésistibles !"
+                                      data-prix="4,50€" onclick="openModalFromDiv(this)" style="cursor: pointer";>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="image/Accompagnements/alloco.jpeg"
+                                                alt="Alloco" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Alloco</span></a>
+                                                <span class="text-primary">4,50€</span>
+                                            </h5>
+                                            <small class="fst-italic">Bananes plantains mûres, coupées et frites à la perfection. Fondantes, dorées, irrésistibles !</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="col-lg-6">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Foutou / Fufu"
+                                      data-image="image/Accompagnements/foutu_fufu.jpeg"
+                                      data-description="Pâte souple à base de banane plantain ou manioc, idéale pour savourer les sauces comme au pays. À manger avec les doigts !"
+                                      data-prix="4,50€" onclick="openModalFromDiv(this)" style="cursor: pointer";>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="image/Accompagnements/foutu_fufu.jpeg"
+                                                alt="Sauce tômbô + riz" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Foutou / Fufu</span></a>
+                                                <span class="text-primary">4,50€</span>
+                                            </h5>
+                                            <small class="fst-italic">Pâte souple à base de banane plantain ou manioc, idéale pour savourer les sauces comme au pays. À manger avec les doigts !</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="col-lg-6">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Attiéké"
+                                      data-image="image/Accompagnements/atiéké.jpeg" 
+                                      data-description="Semoule de manioc à la texture fine et légèrement acidulée. Le parfait compagnon d’un poisson braisé ou d’un plat en sauce."
+                                      data-prix="13,50€" onclick="openModalFromDiv(this)" style="cursor: pointer";>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="image/Accompagnements/atiéké.jpeg"
+                                                alt="Sauce tômbô + riz" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Attiéké</span></a>
+                                                <span class="text-primary">4,50€</span>
+                                            </h5>
+                                            <small class="fst-italic">Semoule de manioc à la texture fine et légèrement acidulée. Le parfait compagnon d’un poisson braisé ou d’un plat en sauce.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="col-lg-6">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Couscous nature"
+                                      data-image="image/Accompagnements/couscous_nature.jpeg"
+                                      data-description="Semoule légère, simple et moelleuse. À accompagner de légumes ou d’un bon tajine maghrébin."
+                                      data-prix="3,90€" onclick="openModalFromDiv(this)" style="cursor: pointer";>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="image/Accompagnements/couscous_nature.jpeg"
+                                                alt="Couscous nature" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Couscous nature</span></a>
+                                                <span class="text-primary">3,90€</span>
+                                            </h5>
+                                            <small class="fst-italic">Semoule légère, simple et moelleuse. À accompagner de légumes ou d’un bon tajine maghrébin.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="col-lg-6">
+                                    <div class="d-flex align-items-center article"
+                                     data-title="Injera (pièce)"
+                                      data-image="image/Accompagnements/injera.jpeg"
+                                      data-description="Crêpe éthiopienne légèrement fermentée, au goût unique. Elle se mange, elle accompagne, elle enveloppe."
+                                      data-prix="13,50€" onclick="openModalFromDiv(this)" style="cursor: pointer";>
+                                        <a href="#"><img class="flex-shrink-0 img-fluid rounded" src="image/Accompagnements/injera.jpeg"
+                                                alt="Sauce tômbô + riz" style="width: 80px;"></a>
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                <a href="#"><span>Injera (pièce)</span></a>
+                                                <span class="text-primary">3,50€</span>
+                                            </h5>
+                                            <small class="fst-italic">Crêpe éthiopienne légèrement fermentée, au goût unique. Elle se mange, elle accompagne, elle enveloppe.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -1228,20 +1374,33 @@
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
     <!--debut modal  -->
-    <div id="myModal" class="modal scrollable-container">
-        <div class="modal-content">
+    <div id="myModal" class="modal">
+         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h4 id="modalTitle"></h4>
             <img id="modalImage" src="" alt="" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
             <p id="modalDescription"></p>
             <p><strong>Prix :</strong> <span id="modalPrix"></span></p>
-            <button onclick="ajouterAuPanier()"
+            <button onclick="ajouterAuPanierDepuisModal()"
                 style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px;">
                 Ajouter au panier
             </button>
         </div>
     </div>
      <!-- fin modal  -->
+    <!-- <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h4 id="modalTitle"></h4>
+    <img id="modalImage" src="" alt="" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
+    <p id="modalDescription"></p>
+    <p><strong>Prix :</strong> <span id="modalPrix"></span></p>
+    <button onclick="ajouterAuPanier()"
+      style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px;">
+      Ajouter au panier
+    </button>
+  </div>
+</div> --> -->
+
 
     <!-- debut script pour modal -->
     <script>
@@ -1287,6 +1446,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/panier.js"></script>
 </body>
 
 </html>

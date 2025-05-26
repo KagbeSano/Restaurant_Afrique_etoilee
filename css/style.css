@@ -237,13 +237,18 @@
     position: relative;
     height: 100%;
     min-height: 500px;
-    background: linear-gradient(rgba(15, 23, 43, .1), rgba(15, 23, 43, .1)), url(../img/video.jpg);
+    background: linear-gradient(rgba(15, 23, 43, .1), rgba(15, 23, 43, .1)), url(image/img_reser.jpeg);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
+     overflow: hidden;
+}
+.image-plein {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajuste le remplissage sans déformation */
 }
 
-.video .btn-play {
+/* .video .btn-play {
     position: absolute;
     z-index: 3;
     top: 50%;
@@ -306,7 +311,7 @@
     border-left: 32px solid var(--dark);
     border-top: 22px solid transparent;
     border-bottom: 22px solid transparent;
-}
+} */
 
 @keyframes pulse-border {
     0% {
@@ -347,7 +352,7 @@
     color: #FFFFFF;
     background: #000000;
     opacity: 1;
-}
+} */
 
 
 /*** Team ***/
