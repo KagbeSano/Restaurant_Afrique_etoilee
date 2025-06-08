@@ -24,7 +24,7 @@
   <!-- Template Stylesheet -->
   <link href="css/style.css" rel="stylesheet">
   <style>
-    .panier-img {
+    /* .panier-img {
       width: 80px;
       height: auto;
     }
@@ -34,6 +34,29 @@
       height: 32px;
       text-align: center;
       padding: 0;
+    } */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #listePanier li {
+      margin-bottom: 10px;
+    }
+
+    #totalPanier {
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    button {
+      padding: 8px 12px;
+      border: none;
+      background-color: #dc3545;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -47,7 +70,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" style="color: white;" href="index.html">Accueil</a></li>
+          <li class="nav-item "><a class="nav-link active" style="color: white;" href="index.html">Accueil</a></li>
           <!-- <li class="nav-item"><a class="nav-link" style="color: white;" href="panier.html"><i class="bi bi-cart"></i> -->
           </a></li>
         </ul>
@@ -55,7 +78,7 @@
     </div>
   </nav>
 
-  <!-- <div class="container my-5">
+  <div class="container my-5">
     <h2 class="mb-4">Mon Panier</h2>
 
     <table class="table table-bordered align-middle text-center">
@@ -69,104 +92,82 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody id="panier-body"> -->
-        <!-- Les lignes seront générées par JavaScript -->
-      <!-- </tbody>
+      <tbody id="listePanier">
+
+      </tbody>
     </table>
     <div class="text-end">
-      <h4>Total : <span id="panier-total">0 €</span></h4>
-      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commandeModal"
+      <h4>Total : <span id="totalPanier">0 €</span></h4>
+      <div class="mb-3">
+  <label for="adresse" class="form-label">Adresse de livraison</label>
+  <textarea id="adresse" class="form-control" placeholder="Ex: 12 rue de l'Afrique, Dakar" required></textarea>
+</div>
+
+      <button class="btn btn-danger" onclick="viderPanier()">Vider le panier</button>
+      <button id="btnCommander" class="btn btn-primary" 
         style="padding: 10px 20px;  border: none; border-radius: 10px;">Commander</button>
     </div>
 
-    <div>
-      <button class="btn btn-primary" style="width:500px; padding: 10px 20px;  border: none; border-radius: 10px;">
-        Ajouter plus d'éléments
-      </button>
-    </div>
-  </div> -->
-  <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Mon Panier</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    #listePanier li { margin-bottom: 10px; }
-    #totalPanier { font-weight: bold; margin-top: 20px; font-size: 18px; }
-    button { padding: 8px 12px; border: none; background-color: #dc3545; color: white; border-radius: 5px; cursor: pointer; }
-  </style>
-</head>
-<body>
+    <a href="menu.html">
+      <div>
+        <button class="btn btn-primary" style="width:250px; padding: 10px 20px;  border: none; border-radius: 10px;">
+          ← Retour au menu
+        </button>
+      </div>
+    </a>
+  </div>
 
-  <h1>🛒 Mon Panier</h1>
-
-  <ul id="listePanier"></ul>
-
-  <div id="totalPanier">Total : 0 €</div>
-
-  <button onclick="viderPanier()">Vider le panier</button>
-
-  <!-- Lien vers la page des plats ou retour -->
-  <p><a href="index.html">← Retour à la boutique</a></p>
-
-  <script src="panier.js"></script>
-  
-  <!-- <script>
-  // Exemple de données du panier (à remplacer par des données PHP ou API)
-  let panier = [
-    { id: 1, nom: "Poulet braisé", prix: 12.5, quantite: 2, image: "poulet.jpg" },
-    { id: 2, nom: "Riz sauce arachide", prix: 10, quantite: 1, image: "riz.jpg" }
-  ];
-
-  const panierBody = document.getElementById("panier-body");
-  const panierTotal = document.getElementById("panier-total");
-
-  function afficherPanier() {
-    panierBody.innerHTML = "";
-    let total = 0;
-
-    panier.forEach((article, index) => {
-      const sousTotal = article.prix * article.quantite;
-      total += sousTotal;
-
-      panierBody.innerHTML += `
-        <tr>
-          <td><img src="images/${article.image}" class="panier-img" alt="${article.nom}"></td>
-          <td>${article.nom}</td>
-          <td>${article.prix.toFixed(2)} €</td>
-          <td>
-            <div class="d-flex justify-content-center align-items-center gap-2">
-              <button class="btn btn-outline-secondary quantite-btn" onclick="modifierQuantite(${index}, -1)">−</button>
-              <span>${article.quantite}</span>
-              <button class="btn btn-outline-secondary quantite-btn" onclick="modifierQuantite(${index}, 1)">+</button>
-            </div>
-          </td>
-          <td>${sousTotal.toFixed(2)} €</td>
-          <td><button class="btn btn-danger btn-sm" onclick="supprimerArticle(${index})">Supprimer</button></td>
-        </tr>
-      `;
+  <Script>
+    document.querySelector("#btnCommander").addEventListener("click", () => {
+       alert("Clic détecté"); // 🟡 Étape 1
+      fetch("verifier_session.php")
+        .then(r => r.json())
+        .then(data => {
+          if (data.connecte) {
+            envoyerCommande(); // déjà codé
+          } else {
+            if (confirm("Vous devez vous connecter pour commander. Souhaitez-vous vous connecter maintenant ?")) {
+              window.location.href = "connexion.php"; // ou une modale
+            }
+          }
+        });
     });
+   function envoyerCommande() {
+    const panier = JSON.parse(localStorage.getItem("panier") || "{}");
+    const adresse = document.querySelector("#adresse").value;
 
-    panierTotal.textContent = total.toFixed(2) + " €";
-  }
+    fetch("validation_commande.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ panier: panier, adresse: adresse })
+    })
+    .then(r => r.text())
+    .then(msg => {
+        alert(msg);
+        localStorage.removeItem("panier");
+        location.reload(); // ou rediriger vers confirmation
+    });
+}
+  </Script>
+<!-- data-bs-toggle="modal" data-bs-target="#commandeModal" -->
+  <script src="js/panier.js" defer></script>
+  <!-- <div class="container my-5">
 
-  function modifierQuantite(index, delta) {
-    panier[index].quantite += delta;
-    if (panier[index].quantite <= 0) {
-      supprimerArticle(index);
-    } else {
-      afficherPanier();
-    }
-  }
+    <h1 class="text-center mb-4">🛒 Mon Panier</h1>
 
-  function supprimerArticle(index) {
-    panier.splice(index, 1);
-    afficherPanier();
-  }
+    <ul id="listePanier" class="list-group mb-4">
+  
+    </ul>
 
-  afficherPanier();
-</script> -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 id="totalPanier" class="m-0">Total : 0 €</h4>
+      <button class="btn btn-danger" onclick="viderPanier()">Vider le panier</button>
+    </div>
 
+    <div class="text-center">
+      <a href="menu.html" class="btn btn-secondary">← Retour au menu</a>
+    </div>
+  </div>  -->
 </body>
+
 </html>
