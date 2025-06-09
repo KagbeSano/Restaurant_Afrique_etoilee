@@ -105,29 +105,29 @@
                     <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                         <h5 class="section-title ff-secondary text-start text-primary fw-normal">Réservation</h5>
                         <h1 class="text-white mb-4">Réserver une table en ligne</h1>
-                        <form>
+                        <form action="php/reserver.php" method="POST">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Votre Prénom">
-                                        <label for="name">Votre Prénom</label>
+                                        <input type="text" class="form-control" name="nom" placeholder="Votre Prénom" required>
+                                        <label for="nom">Votre Prénom</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Votre Email">
+                                        <input type="email" class="form-control" name="email" placeholder="Votre Email" required>
                                         <label for="email">Votre Email</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" id="datetime" placeholder="Date & l'heure" data-target="#date3" data-toggle="datetimepicker" />
-                                        <label for="datetime">Date & l'heure</label>
+                                        <input type="datetime-local" class="form-control datetimepicker-input" name="datetime_resa" placeholder="Date et heure" data-target="#date3" data-toggle="datetimepicker" required>
+                                        <label for="datetime_resa">Date et heure</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="select1">
+                                        <select class="form-select" id="select1" name="nombre_personnes">
                                           <option value="1">1 personne</option>
                                           <option value="2">2 personne</option>
                                           <option value="3">3 personne</option>
@@ -139,8 +139,8 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Démande spéciale" id="message" style="height: 100px"></textarea>
-                                        <label for="message">Démande spéciale</label>
+                                        <textarea class="form-control" placeholder="Démande spéciale" id="description" name="description" style="height: 100px"></textarea>
+                                        <label for="description">Démande spéciale</label>
                                     </div>
                                 </div>
                                 <div class="col-12">

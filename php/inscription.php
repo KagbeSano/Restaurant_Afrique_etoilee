@@ -1,21 +1,36 @@
 <?php
-$nom = $_POST['nom_invite'] ?? '';
-$email = $_POST['email'] ?? '';
-?>
+session_start();
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-<form method="POST" action="enregistrer_client.php" class="container mt-5">
-    <h2>Créer un compte</h2>
-    <div class="mb-3">
-        <label>Nom</label>
-        <input type="text" name="nom" value="<?= htmlspecialchars($nom) ?>" class="form-control" required>
-    </div>
-    <div class="mb-3">
-        <label>Email</label>
-        <input type="email" name="email" class="form-control" required>
-    </div>
-    <div class="mb-3">
-        <label>Mot de passe</label>
-        <input type="password" name="mot_de_passe" class="form-control" required>
-    </div>
-    <button type="submit" class="btn btn-success">Créer mon compte</button>
-</form>
+require 'connexionbdd.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nom'], $_POST['email'], $_POST['telephone'], $_POST['mdp'])) {
+    $nom = trim($_POST['nom']);
+    $email = trim($_POST['email']);
+    $telephone = trim($_POST['telephone']);
+    $mdp = password_hash(trim($_POST['mdp']), PASSWORD_DEFAULT);
+
+    // Vérifie si l'email existe déjà
+    $stmt = $pdo->prepare("SELECT id FROM clients WHERE email = ?");
+    $stmt->execute([$email]);
+
+    if ($stmt->fetch()) {
+        header("Location: ../panier.html?erreur=existe");
+        exit();
+    }
+
+    // Insère le nouveau client
+    $stmt = $pdo->prepare("INSERT INTO clients (nom, email, telephone, mdp) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$nom, $email, $telephone, $mdp]);
+
+    $_SESSION['client_id'] = $pdo->lastInsertId();
+    $_SESSION['client_nom'] = $nom;
+
+    header("Location: ../panier.html?inscription=ok");
+    exit();
+} else {
+    header("Location: ../panier.html?erreur=donnees");
+    exit();
+}
+?>

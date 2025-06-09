@@ -16,7 +16,7 @@ function ajouterAuPanierDepuisModal() {
   localStorage.setItem("panier", JSON.stringify(panier));
 
   mettreAJourBadge();
-  alert(`"${titre}" ajouté au panier !`);
+  // alert(`"${titre}" ajouté au panier !`);
 }
 // Met à jour le badge rouge avec le nombre d’articles
 function afficherPanier() {
@@ -63,37 +63,6 @@ console.log('listePanier élément:', document.getElementById("listePanier"));
 
   totalDiv.textContent = `${total.toFixed(2)} €`;
 }
-// Affiche la liste des produits (ex: dans panier.html)
-// function afficherPanier() {
-//   const liste = document.getElementById("listePanier");
-//   const totalDiv = document.getElementById("totalPanier");
-//   if (!liste || !totalDiv) return;
-
-//   liste.innerHTML = "";
-//   let total = 0;
-
-//   panier.forEach((item, index) => {
-//     const li = document.createElement("li");
-//     li.innerHTML = `
-//       <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-//         <img src="${item.image}" alt="${item.titre}" style="width: 60px; height: auto; border-radius: 5px;">
-//         <div>
-//           <strong>${item.titre}</strong><br>
-//           <small>${item.prix}</small>
-//         </div>
-//         <button onclick="supprimerDuPanier(${index})" style="margin-left:auto; color:red;">❌</button>
-//       </div>
-//     `;
-//     liste.appendChild(li);
-
-//     // Calcul du total
-//     const prixNum = parseFloat(item.prix.replace(/[^\d,.-]/g, "").replace(",", "."));
-//     total += isNaN(prixNum) ? 0 : prixNum;
-//   });
-//    // Met à jour le total
-//   totalDiv.textContent = `Total : ${total.toFixed(2)} €`;
-// }
-
 // Supprime un article du panier
 function supprimerDuPanier(index) {
   panier.splice(index, 1);
@@ -126,16 +95,6 @@ function mettreAJourBadge() {
   badge.style.display = count > 0 ? "inline-block" : "none";
 }
 
-
-// Simuler l'ajout d’un produit au panier
-document.addEventListener("DOMContentLoaded", function () {
-  const bouton = document.getElementById("ajouterAuPanierBtn");
-  if (bouton) {
-    bouton.addEventListener("click", ajouterAuPanierDepuisModal);
-  }
-});
-
-
 // modifier la quantité
 function modifierQuantite(index, delta) {
   if (!panier[index].quantite) panier[index].quantite = 1;
@@ -146,15 +105,15 @@ function modifierQuantite(index, delta) {
   localStorage.setItem("panier", JSON.stringify(panier));
   afficherPanier();
 }
-
-// ✅ Code exécuté au chargement de la page
-// document.addEventListener("DOMContentLoaded", () => {
-//   afficherPanier();      // Affiche les produits dans <ul id="listePanier">
-//   mettreAJourBadge();    // Met à jour le badge rouge si présent
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+  const bouton = document.getElementById("ajouterAuPanierBtn");
+  if (bouton) {
+    // Avant d’ajouter l'événement, on supprime tous les anciens (optionnel mais sûr)
+    bouton.replaceWith(bouton.cloneNode(true)); // reset total du bouton
+    document.getElementById("ajouterAuPanierBtn").addEventListener("click", ajouterAuPanierDepuisModal);
+  }
 
   const liste = document.getElementById("listePanier");
   const totalDiv = document.getElementById("totalPanier");
@@ -164,6 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.log("✅ panier.js chargé — pas de panier à afficher sur cette page.");
   }
+
+  mettreAJourBadge();
 });
-
-

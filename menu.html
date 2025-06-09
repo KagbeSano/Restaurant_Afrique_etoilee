@@ -1380,12 +1380,13 @@
             <img id="modalImage" src="" alt="" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
             <p id="modalDescription"></p>
             <p><strong>Prix :</strong> <span id="modalPrix"></span></p>
-            <button id="ajouterAuPanierBtn" onclick="ajouterAuPanierDepuisModal()"
+            <button id="ajouterAuPanierBtn" 
                 style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px;">
                 Ajouter au panier
             </button>
         </div>
     </div>
+    <!-- onclick="ajouterAuPanierDepuisModal()" -->
      <!-- fin modal  -->
 
     <!-- debut script pour modal -->
@@ -1403,10 +1404,10 @@
             document.getElementById("myModal").style.display = "none";
         }
 
-        function ajouterAuPanier() {
-            const item = document.getElementById("modalTitle").textContent;
-            alert(item + " ajouté au panier !");
-        }
+        // function ajouterAuPanier() {
+        //     const item = document.getElementById("modalTitle").textContent;
+        //     alert(item + " ajouté au panier !");
+        // }
 
         window.onclick = function (event) {
             const modal = document.getElementById("myModal");

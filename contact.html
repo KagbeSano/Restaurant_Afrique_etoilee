@@ -134,39 +134,39 @@
                     </div>
                     <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form>
+                            <form action="php/contact.php" method="post">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="nom" placeholder="Votre Nom">
-                                            <label for="name">Votre Nom</label>
+                                            <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre Nom" required>
+                                            <label for="nom">Votre Nom</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" id="email"
-                                                placeholder="votre adresse electronique">
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                placeholder="votre adresse electronique" required>
                                             <label for="email">Votre Email</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="objet" placeholder="Objet">
-                                            <label for="objet">Objet</label>
+                                            <input type="text" class="form-control" id="sujet" name="sujet" placeholder="Objet" required>
+                                            <label for="sujet">Objet</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Leave a message here"
-                                                id="message" style="height: 150px"></textarea>
+                                                id="message" name="message" style="height: 150px"></textarea>
                                             <label for="message">Message</label>
                                         </div>
                                     </div>
-                                    <a href="js/contacte.js">
+                                    <!-- <a href="js/contacte.js"> -->
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100 py-3" type="submit">Envoyez un Message</button>
                                         </div>
-                                    </a>
+                                    <!-- </a> -->
                                 </div>
                             </form>
                         </div>

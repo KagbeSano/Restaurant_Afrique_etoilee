@@ -464,6 +464,12 @@
                 </div>
             </div>
         </div>
+        <div class="text-center mb-4">
+  <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAvis">
+    Laisser un avis
+  </button>
+</div>
+
         <!-- Testimonial End -->
 
 
@@ -589,9 +595,56 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Template Javascript -->
+  
     <script src="js/main.js"></script>
     <script src="js/panier.js"></script>
+  <!-- modal pour envoyer un avis -->
+    <div class="modal fade" id="modalAvis" tabindex="-1" aria-labelledby="modalAvisLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="php/envoyer_avis.php" method="POST" enctype="multipart/form-data" class="p-3">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAvisLabel">Laisser un témoignage</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="nom" class="form-label">Nom *</label>
+            <input type="text" class="form-control" id="nom" name="nom" required>
+          </div>
+          <div class="mb-3">
+            <label for="profession" class="form-label">Profession (optionnel)</label>
+            <input type="text" class="form-control" id="profession" name="profession">
+          </div>
+          <div class="mb-3">
+            <label for="commentaire" class="form-label">Votre avis *</label>
+            <textarea class="form-control" id="commentaire" name="commentaire" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="photo" class="form-label">Photo (optionnel)</label>
+            <input class="form-control" type="file" id="photo" name="photo" accept="image/*">
+          </div>
+          <div class="mb-3">
+            <label for="note" class="form-label">Note *</label>
+            <select class="form-select" id="note" name="note" required>
+              <option value="">Choisissez une note</option>
+              <option value="5">5 étoiles</option>
+              <option value="4">4 étoiles</option>
+              <option value="3">3 étoiles</option>
+              <option value="2">2 étoiles</option>
+              <option value="1">1 étoile</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- fin modal pour envoyer un avis -->
 </body>
 
 </html>
