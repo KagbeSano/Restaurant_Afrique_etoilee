@@ -3,21 +3,34 @@ let panier = JSON.parse(localStorage.getItem("panier")) || [];
 console.log("📦 Script panier.js chargé");
 // Fonction pour ajouter un produit au panier
 function ajouterAuPanierDepuisModal() {
-  // console.log("ajouterAuPanierDepuisModal() appelée"); // <--- AJOUTE ÇA
   const titre = document.getElementById("modalTitle").textContent;
   const image = document.getElementById("modalImage").src;
   const description = document.getElementById("modalDescription").textContent;
   const prix = document.getElementById("modalPrix").textContent;
 
   const produit = { titre, image, description, prix };
-  // console.log({ titre, image, description, prix }); // <--- AJOUTE ÇA
-
   panier.push(produit);
   localStorage.setItem("panier", JSON.stringify(panier));
 
   mettreAJourBadge();
-  // alert(`"${titre}" ajouté au panier !`);
+
+  // 🔒 Sécurisé avec vérification d'existence
+  const toastEl = document.getElementById("toastAjoutPanier");
+  if (toastEl) {
+    const toastBody = toastEl.querySelector(".toast-body");
+    if (toastBody) toastBody.textContent = `"${titre}" a été ajouté au panier !`;
+
+    try {
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+    } catch (e) {
+      console.error("Erreur affichage toast :", e);
+    }
+  } else {
+    console.warn("Toast introuvable, rien affiché.");
+  }
 }
+
 // Met à jour le badge rouge avec le nombre d’articles
 function afficherPanier() {
   const liste = document.getElementById("listePanier");
@@ -107,11 +120,12 @@ function modifierQuantite(index, delta) {
 }
 document.addEventListener("DOMContentLoaded", () => {
   panier = JSON.parse(localStorage.getItem("panier")) || [];
+  console.log("✅ DOM prêt, panier récupéré :", panier);
+
 
   const bouton = document.getElementById("ajouterAuPanierBtn");
   if (bouton) {
-    // Avant d’ajouter l'événement, on supprime tous les anciens (optionnel mais sûr)
-    bouton.replaceWith(bouton.cloneNode(true)); // reset total du bouton
+    bouton.replaceWith(bouton.cloneNode(true));
     document.getElementById("ajouterAuPanierBtn").addEventListener("click", ajouterAuPanierDepuisModal);
   }
 
@@ -121,8 +135,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (liste && totalDiv) {
     afficherPanier();
   } else {
-    console.log("✅ panier.js chargé — pas de panier à afficher sur cette page.");
+    console.log("Pas de panier à afficher sur cette page");
   }
 
   mettreAJourBadge();
+  console.log("✅ Script terminé.");
+
 });
+

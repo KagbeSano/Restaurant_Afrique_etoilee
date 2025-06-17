@@ -17,15 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['mdp'
     if ($client && password_verify($mdp, $client['mdp'])) {
         $_SESSION['client_id'] = $client['id'];
         $_SESSION['client_nom'] = $client['nom'];
-        header("Location: ../panier.html"); // succès
+        header("Location: ../panier.php"); // succès
         exit();
     } else {
-        header("Location: ../panier.html?erreur=1"); // échec
+        header("Location: ../panier.php?erreur=1"); // échec
         exit();
     }
 } else {
     // Accès direct interdit, redirection vers panier
-    header("Location: ../panier.html");
+    header("Location: ../panier.php");
     exit();
 }
 ?>
+
+

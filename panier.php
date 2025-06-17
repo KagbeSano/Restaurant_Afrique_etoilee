@@ -1,3 +1,12 @@
+<?php
+session_start();
+?>
+<?php if (isset($_SESSION['client_nom'])): ?>
+  <p>Bienvenue <?= htmlspecialchars($_SESSION['client_nom']) ?></p>
+<?php else: ?>
+  <p>Bonjour, veuillez vous connecter.</p>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -166,6 +175,13 @@
         <div class="tab-content pt-3">
           <!-- Se connecter -->
           <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+            <?php if (isset($_GET['erreur']) && $_GET['erreur'] == 1): ?>
+             <div class="alert alert-danger">
+               Email ou mot de passe incorrect.
+             </div>
+            <?php endif; ?>
+
+            <!-- <div id="messageErreurConnexion" style="color: red; margin-bottom: 10px;"></div> -->
             <form action="php/login.php" method="post">
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -204,7 +220,7 @@
 
           <!-- Commander en invité -->
           <div class="tab-pane fade" id="guest" role="tabpanel" aria-labelledby="guest-tab">
-            <form action="php/guest_order.php" method="POST">
+            <form action="php/invite.php" method="POST">
               <div class="mb-3">
                 <label for="guestName" class="form-label">Nom complet</label>
                 <input type="text" class="form-control" id="guestName" name="name" required>
@@ -222,8 +238,91 @@
     </div>
   </div>
 </div>
+  <!-- le modal pour finaliser la commande -->
+ <div class="modal fade" id="modalFinalCommande" tabindex="-1" aria-labelledby="modalFinalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="formFinalCommande">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalFinalLabel">Finaliser la commande</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="adresseLivraison" class="form-label">Adresse de livraison</label>
+            <textarea class="form-control" id="adresseLivraison" name="adresse" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="paiement" class="form-label">Choisir le mode de paiement</label>
+            <select class="form-select" id="paiement" name="paiement" required>
+              <option value="">Sélectionnez...</option>
+              <option value="cb">Carte bancaire</option>
+              <option value="paypal">PayPal</option>
+              <option value="bitcoin">Bitcoin (juste pour tester 😉)</option>
+            </select>
+          </div>
+          <!-- Tu peux ajouter ici des champs spécifiques au paiement si besoin -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+          <button type="submit" class="btn btn-success">Valider et payer</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- fin du modal pour finaliser la commande -->
+<script>
+   document.getElementById('formFinalCommande').addEventListener('submit', function(event) {
+  event.preventDefault();
 
-   <!-- fin formulaire modal -->
+  const adresse = document.getElementById('adresseLivraison').value.trim();
+  const paiement = document.getElementById('paiement').value;
+
+  if (!adresse) {
+    alert('Veuillez saisir une adresse de livraison.');
+    return;
+  }
+  if (!paiement) {
+    alert('Veuillez choisir un mode de paiement.');
+    return;
+  }
+
+  // Préparer les données à envoyer, y compris invité
+  const data = {
+    nom: document.getElementById('guestName').value,
+    email: document.getElementById('guestEmail').value,
+    adresse: adresse,
+    paiement: paiement
+  };
+
+  fetch('php/traiter_commande_invite.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(result => {
+    if(result.success){
+      alert('Commande validée avec succès !');
+      const modalFinal = bootstrap.Modal.getInstance(document.getElementById('modalFinalCommande'));
+      if (modalFinal) modalFinal.hide();
+      const modalCommande = bootstrap.Modal.getInstance(document.getElementById('commandeModal'));
+      if (modalCommande) modalCommande.hide();
+      document.getElementById('formInvite').reset();
+      document.getElementById('formFinalCommande').reset();
+      // Ici tu peux rediriger ou faire autre chose
+    } else {
+      alert('Erreur : ' + result.message);
+    }
+  })
+  .catch(error => {
+    alert('Erreur serveur, merci de réessayer plus tard.');
+    console.error(error);
+  });
+});
+
+</script>
 
 </body>
 
