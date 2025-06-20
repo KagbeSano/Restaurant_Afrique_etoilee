@@ -46,7 +46,9 @@ session_start();
     } */
     body {
       font-family: Arial, sans-serif;
-      padding: 20px;
+      /* padding: 20px; */
+       margin: 0;
+      padding: 0;
     }
 
     #listePanier li {
@@ -71,9 +73,9 @@ session_start();
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#"><img src="image/logo.png" alt="logo" style="width: 50px; height:50px;"></a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark w-100">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="image/logo.png" alt="logo" style="width: 70px; height:70px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
